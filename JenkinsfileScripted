@@ -3,7 +3,7 @@ node
  
   stage("CheckOutCodeGit")
   {
-   git branch: 'master', credentialsId: '65fb834f-a83b-4fe7-8e11-686245c47a65', url: 'https://github.com/bhaskar0504/node-js-application.git'
+   git branch: 'master', credentialsId:'bitbucket-app', url:'https://Mohamed_Hariz@bitbucket.org/Mohamed_Hariz/jenkins-demo.git'
  }
  
  stage("Build")
@@ -29,7 +29,8 @@ node
  
  stage('RunNodeJsApp')
  {
- //sh "./scripts/run.sh"
+     sh "chmod u+x /runApp.sh"
+     sh "/runApp.sh"
  nodejs(nodeJSInstallationName: 'nodejs15.2.1') {
         sh 'npm start &'
     }
